@@ -4,6 +4,26 @@ from hero import Hero
 
 ARENA_NAME = "The Diamond Circle"
 
+def battle(hero: Hero , enemy: Goblin):
+    while hero.is_alive and enemy.is_alive():
+        hero_damage=hero.attack()
+        print(hero_damage)
+        enemy.take_damage(hero_damage)
+
+        if enemy.is_alive():
+            enemy_damage=enemy.attack()
+            hero.take_damage(enemy_damage)
+
+        if hero.is_alive():
+            print(f"{hero.name} won the battle!")
+        else:
+            print(f"{enemy.name} won the battle!")
+
+
+
+
+
+
 
 def main():
     """Open the arena and introduce its first opponent."""
@@ -11,13 +31,11 @@ def main():
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
     print("The gates are opening...")
 
-    goblin = Goblin("Big Bean")
+    goblin = Goblin("Bean")
 
     print(f"{goblin.name} enters the arena with {goblin.health} health.")
 
-    goblinTwo = Goblin("Little Bean")
     
-    print(f"{goblinTwo.name} enters the arena with {goblin.health} health.")
     print("But no hero has answered the call... yet.")
 
     print("... Wait What is That I hear?")
@@ -28,13 +46,16 @@ def main():
     hero = Hero("Cali")
 
     print(f"{hero.name} enters the arena with {hero.health} health.")
+    battle(hero,goblin)
 
 
 
-    # Cali attacks should return a number
-    print (f"The hero attacks {goblinTwo.name}")
-    CaliAttackNumber = hero.attack()
-    goblin.take_damage=CaliAttackNumber
+   
+
+    
+
+
+   
     
     
 
@@ -43,3 +64,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
